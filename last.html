@@ -6,101 +6,114 @@
 <title>Forever With You ❤️</title>
 
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
-    color: black;
-    cursor: pointer;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
 
-  /* FULLSCREEN BACKGROUND VIDEO */
-  #bgVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
+/* FULLSCREEN BACKGROUND VIDEO */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
 
-  #start-prompt {
-    position: fixed;
-    width: 100%;
-    top: 40%;
-    font-size: 24px;
-    color: #ff66b3;
-    animation: pulse 1.5s infinite;
-    z-index: 100;
-  }
+/* Dark overlay for readability */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  z-index: -1;
+}
 
-  @keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-  }
+#start-prompt {
+  position: fixed;
+  width: 100%;
+  top: 45%;
+  font-size: 24px;
+  color: #ff99cc;
+  animation: pulse 1.5s infinite;
+  z-index: 100;
+}
 
-  #container {
-    position: relative;
-    top: 10%;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 1s ease;
-    pointer-events: none;
-  }
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
 
-  img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #ff4da6;
-    box-shadow: 0 0 40px #ff1a75;
-    margin-bottom: 20px;
-    animation: imgPulse 2s infinite;
-  }
+#container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: all 1s ease;
+  pointer-events: none;
+  width: 90%;
+  max-width: 600px;
+}
 
-  @keyframes imgPulse {
-    0% { box-shadow: 0 0 20px #ff4da6; }
-    50% { box-shadow: 0 0 60px #ff1a75; }
-    100% { box-shadow: 0 0 20px #ff4da6; }
-  }
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #ff4da6;
+  box-shadow: 0 0 40px #ff1a75;
+  margin-bottom: 20px;
+  animation: imgPulse 2s infinite;
+}
 
-  .kneel { font-size: 50px; margin-bottom: 10px; }
+@keyframes imgPulse {
+  0% { box-shadow: 0 0 20px #ff4da6; }
+  50% { box-shadow: 0 0 60px #ff1a75; }
+  100% { box-shadow: 0 0 20px #ff4da6; }
+}
 
-  h2 {
-    font-size: 28px;
-    margin: 5px 0;
-    color: #ff99cc;
-  }
+.kneel { font-size: 50px; margin-bottom: 10px; }
 
-  h1 {
-    font-size: 32px;
-    margin: 10px 0;
-    color: #ff66b3;
-  }
+h2 {
+  font-size: 26px;
+  margin: 5px 0;
+  color: #ffb3d9;
+}
 
-  p {
-    font-size: 18px;
-    max-width: 500px;
-    margin: auto;
-    line-height: 1.6;
-  }
+h1 {
+  font-size: 30px;
+  margin: 10px 0;
+  color: #ff66b3;
+}
 
-  .blast {
-    position: absolute;
-    font-size: 25px;
-    animation: explode 1.5s ease-out forwards;
-    pointer-events: none;
-  }
+p {
+  font-size: 17px;
+  line-height: 1.6;
+}
 
-  @keyframes explode {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(5); opacity: 0; }
-  }
+.blast {
+  position: absolute;
+  font-size: 25px;
+  animation: explode 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes explode {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(5); opacity: 0; }
+}
 </style>
 </head>
 
@@ -110,6 +123,8 @@
 <video id="bgVideo" autoplay muted loop playsinline>
   <source src="video.mp4" type="video/mp4">
 </video>
+
+<div class="overlay"></div>
 
 <div id="start-prompt">Click anywhere for a surprise... ❤️</div>
 
@@ -122,8 +137,8 @@
     7 Years ayyaka kuda...<br>
     naa decision ippudu kuda nuvve.<br><br>
     Manam chusina anni phases tarvata kuda...<br>
-    naa future lo pakkana undali ani korukuntunna dhi ninne!!!!.<br><br>
-    7 years kaadu... lifetime kavali. ❤️
+    naa future lo pakkana undali ani korukuntunna dhi ninne!!!!<br><br>
+    7 years kaadu... lifetime kavali ❤️
   </p>
 </div>
 
@@ -140,10 +155,9 @@ function startExperience() {
   const video = document.getElementById("bgVideo");
 
   container.style.opacity = "1";
-  container.style.transform = "scale(1)";
+  container.style.transform = "translate(-50%, -50%) scale(1)";
   container.style.pointerEvents = "auto";
 
-  // Enable sound after click
   video.muted = false;
   video.play();
 
@@ -165,3 +179,4 @@ function createHeart() {
 </body>
 </html>
 
+    
